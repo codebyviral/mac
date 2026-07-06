@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import macOSLight from "@/app/assets/macOS-light.jpg";
-import macOSDark from "@/app/assets/macOS-dark.jpg";
+import macOSLight from "@/app/assets/mac-light.jpg";
+import macOSDark from "@/app/assets/mac-dark.jpg";
 import Header from "@/components/desktop/Header";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
