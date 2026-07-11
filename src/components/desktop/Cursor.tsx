@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
-import cursorSvg from '@/app/assets/cursor.svg';
-import pointerSvg from '@/app/assets/pointinghand.svg';
+import cursorSvg from '@/app/assets/Cursor/cursor.svg';
+import pointerSvg from '@/app/assets/Cursor/pointinghand.svg';
 
 type cursorProps = {
   visible: boolean;

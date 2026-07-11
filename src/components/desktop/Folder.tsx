@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import FolderImg from '@/app/assets/folder-icon.png';
+import FolderImg from '@/app/assets/Finder/folder-icon.png'
 import { useWindowManager } from '@/hooks/useWindowManager';
 import interact from 'interactjs';
 import { useEffect } from 'react';

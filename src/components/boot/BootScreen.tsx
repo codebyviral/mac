@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import AppleIcon from '@/app/assets/apple-icon.png';
+import AppleIcon from '@/app/assets/Apple/apple-icon.png';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useRouter } from 'next/navigation';
@@ -29,7 +29,7 @@ const BootScreen = (props: bootProps) => {
       duration: 0.5,
     });
   }, [props]);
-  
+
 
   return (
     <div ref={containerRef} className="fixed inset-0 bg-black cursor-none">

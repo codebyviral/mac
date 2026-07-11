@@ -1,17 +1,10 @@
 import { Input } from '@/components/ui/input';
 import { useWindowManager } from '@/hooks/useWindowManager';
-import { isEnter } from '@/lib/keyboard';
-import { ArrowRightIcon } from '@phosphor-icons/react';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';
-import AppleWhiteBg from '@/app/assets/apple-white-bg-modified.png';
-import { toast } from 'sonner';
-import { log } from 'console';
-import { signup } from '@/lib/action';
-import BhavyaLockscreen from "@/app/assets/bhavya-lockscreen.png"
-import MacReturnIcon from "@/app/assets/MacReturn.svg"
-import Alex from "@/app/assets/Alex.jpeg"
-import gsap from 'gsap';
+import BhavyaLockscreen from "@/app/assets/User/bhavya-lockscreen.png"
+import MacReturnIcon from "@/app/assets/Keyboard/MacReturn.svg"
+import Alex from "@/app/assets/User/Alex.jpeg"
 
 type ProfileProps = {
     imageUrl: string;

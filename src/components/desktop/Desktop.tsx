@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useWindowManager } from '@/hooks/useWindowManager';
 import gsap from 'gsap';
 import Dock from '@/components/dock/Dock';
+import Resume from '@/components/desktop/Resume';
 
 const Desktop = () => {
 
@@ -36,6 +37,7 @@ const Desktop = () => {
           <Background />
           <div className="flex items-center">
             <Folder />
+            <Resume />
           </div>
           <FinderWindow />
           <Dock />
