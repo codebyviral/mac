@@ -28,7 +28,7 @@ const BootManager = () => {
 
   return (
     <>
-      <div className='h-screen w-screen relative'>
+      <div className='h-screen w-screen relative bg-black'>
         {showBoot ? (
           <BootScreen
             onFinish={() => {
@@ -38,7 +38,7 @@ const BootManager = () => {
           />
         ) : (
           <>
-            <div className='h-screen w-screen'>
+            <div className={`h-screen w-screen`}>
               {
                 lockStatus === 'locked' ? (<div><Lockscreen /></div>) : (<div><Desktop /></div>)
               }

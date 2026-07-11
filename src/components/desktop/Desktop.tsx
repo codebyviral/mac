@@ -10,7 +10,6 @@ import Dock from '@/components/dock/Dock';
 const Desktop = () => {
 
   const { disableHeaderClock, lockStatus } = useWindowManager();
-  const [lock, setLock] = useState(true);
   const desktopRef = useRef(null)
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const Desktop = () => {
 
   useEffect(() => {
     gsap.from(desktopRef.current, {
-      opacity: 1,
+      opacity: 0,
       scale: 1.45,
       duration: 0.5,
     })

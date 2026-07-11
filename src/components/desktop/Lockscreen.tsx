@@ -37,7 +37,7 @@ export default function Lockscreen() {
       clockRef.current,
       {
         y: 30,
-        opacity: 1,
+        opacity: 0,
       },
       {
         y: 0,
