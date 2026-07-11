@@ -22,7 +22,6 @@ type UserProps = {
 type Step = 'username' | 'email' | 'password';
 
 const ProfileCircle = (props: ProfileProps) => {
-  const { toggleHeaderClockState } = useWindowManager();
 
   const [passwordDisplay, setPasswordDisplay] = useState<boolean>(false);
   const [rightArrowDisplay, setRightArrowDisplay] = useState<boolean>(false);
