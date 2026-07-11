@@ -47,7 +47,7 @@ export default function RootLayout({
         'font-sans',
         inter.variable
       )}>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col select-none">
         <WindowManagerProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
             {children}
