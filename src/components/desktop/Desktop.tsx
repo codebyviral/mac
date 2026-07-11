@@ -1,12 +1,11 @@
+"use client"
 import FinderWindow from '@/components/FinderWindow';
 import Folder from '@/components/desktop/Folder';
 import Background from '@/components/desktop/Background';
 import { useEffect, useRef, useState } from 'react';
-import Lockscreen from '@/components/desktop/Lockscreen';
 import { useWindowManager } from '@/hooks/useWindowManager';
 import gsap from 'gsap';
 import Dock from '@/components/dock/Dock';
-import { usePathname } from 'next/navigation';
 
 const Desktop = () => {
 
@@ -30,9 +29,6 @@ const Desktop = () => {
       duration: 0.5,
     })
   }, [lockStatus])
-
-  const pathname = usePathname()
-  console.log(pathname)
 
   return (
     <div className='h-screen w-screen relative overflow-hidden'>

@@ -9,20 +9,22 @@ const Folder = () => {
 
   const { windows, openWindow } = useWindowManager();
 
-  const position = {
-    x: 0,
-    y: 0,
-  }
-
-  interact('.folder-app-icon').draggable({
-    listeners: {
-      move(event) {
-        position.x += event.dx;
-        position.y += event.dy;
-        event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
-      }
+  useEffect(() => {
+    const position = {
+      x: 0,
+      y: 0,
     }
-  })
+
+    interact('.folder-app-icon').draggable({
+      listeners: {
+        move(event) {
+          position.x += event.dx;
+          position.y += event.dy;
+          event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
+        }
+      }
+    })
+  }, [])
 
   return (
     <div className=''>

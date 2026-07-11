@@ -4,23 +4,26 @@ import NavigateAppIcon from "@/app/assets/dock/Navigate.png"
 import ContactAppIcon from "@/app/assets/dock/Contacts.png"
 import MailAppIcon from "@/app/assets/dock/Mail.png"
 import interact from "interactjs"
+import { useEffect } from "react"
 
 const Dock = () => {
 
-    const position = {
-        x: 0,
-        y: 0,
-    }
-
-    interact('.dock-ui').draggable({
-        listeners: {
-            move(event) {
-                position.x += event.dx;
-                position.y += event.dy;
-                event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
-            }
+    useEffect(() => {
+        const position = {
+            x: 0,
+            y: 0,
         }
-    })
+
+        interact('.dock-ui').draggable({
+            listeners: {
+                move(event) {
+                    position.x += event.dx;
+                    position.y += event.dy;
+                    event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
+                }
+            }
+        })
+    }, [])
 
     return (
         <div className="dock-ui">

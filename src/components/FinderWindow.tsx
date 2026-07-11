@@ -69,7 +69,7 @@ const FinderWindow = () => {
       >
         <div className={`absolute top-1/2 left-1/2 ${windowDimension.height} ${windowDimension.width} -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white dark:bg-[#1E1E1E]`}>
           <div className="flex group">
-            {windowActions.map((item) => (
+            {windowActions?.map((item) => (
               <CircleButton
                 key={item.name}
                 takeAction={item.action}
