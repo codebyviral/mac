@@ -1,18 +1,16 @@
-"use client";
+'use client';
 
-import WindowManagerContext from "@/contexts/WindowManager"
-import { useContext } from "react"
+import WindowManagerContext from '@/contexts/WindowManager';
+import { useContext } from 'react';
 
-export function useWindowManager(){
+export function useWindowManager() {
+  const context = useContext(WindowManagerContext);
 
-    const context = useContext(WindowManagerContext);
+  if (!context) {
+    throw new Error(
+      'useWindowManager must be used inside WindowManagerProvider'
+    );
+  }
 
-    if(!context){
-        throw new Error(
-            'useWindowManager must be used inside WindowManagerProvider'
-        )
-    }
-
-    return context;
-
+  return context;
 }

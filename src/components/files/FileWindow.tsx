@@ -1,12 +1,12 @@
-import FilePDF from '@/components/files/FilePDF'
-import React from 'react'
+import FilePDF from '@/components/files/FilePDF';
+import React from 'react';
 
 const FileWindow = () => {
   return (
     <div>
       <FilePDF />
     </div>
-  )
-}
+  );
+};
 
-export default FileWindow
+export default FileWindow;

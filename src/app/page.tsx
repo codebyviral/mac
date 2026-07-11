@@ -1,9 +1,11 @@
-import BootManager from "@/components/boot/BootManager"
+"use client"
+import BootManager from '@/components/boot/BootManager';
+import { useEffect } from 'react';
+
 
 const page = () => {
-  return (
-    <BootManager />
-  )
-}
+  useEffect(() => { sessionStorage.setItem('lock', 'true'); }, [])
+  return <BootManager />;
+};
 
-export default page
+export default page;
