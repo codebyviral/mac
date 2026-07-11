@@ -18,7 +18,7 @@ const Resume = () => {
             y: 0,
         }
 
-        interact('.folder-app-icon').draggable({
+        interact('.resume-app-icon').draggable({
             listeners: {
                 move(event) {
                     position.x += event.dx;
@@ -31,7 +31,7 @@ const Resume = () => {
 
     return (
         <div className=''>
-            <div className="absolute top-100 md:left-100 flex flex-col items-center folder-app-icon">
+            <div className="absolute top-100 md:left-130 flex flex-col items-center resume-app-icon">
                 <Image
                     onDoubleClick={() => openWindow('finder')}
                     className={`w-26.25 object-cover absolute cursor-none transition-all ease-in-out duration-500 ${resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'}`}
@@ -56,7 +56,7 @@ const Resume = () => {
                         height: 'auto',
                     }}
                 />
-                <h1 className="text-sm text-white select-none app-icon-text">Designs⚡️</h1>
+                <h1 className="text-sm text-white select-none app-icon-text">Resume.pdf</h1>
             </div>
         </div>
     );
