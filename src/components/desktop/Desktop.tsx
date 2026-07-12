@@ -19,12 +19,10 @@ const Desktop = () => {
 
   useEffect(() => {
     gsap.from(desktopRef.current, {
-      opacity: 0,
       scale: 1.45,
       duration: 0.5,
     })
     gsap.to(desktopRef.current, {
-      opacity: 1,
       scale: 1,
       duration: 0.5,
     })

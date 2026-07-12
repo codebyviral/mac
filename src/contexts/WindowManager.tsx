@@ -5,9 +5,21 @@ import { createContext, ReactNode, useState } from 'react';
 type WindowName = 'finder';
 type WindowState = Record<WindowName, boolean>;
 
-type WindowSize = {
-  width: string;
-  height: string
+type WindowDimensions = {
+  width: number;
+  height: number;
+}
+
+type WindowPosition = {
+  x: number;
+  y: number;
+}
+
+type PreviousWindow = {
+  x: number;
+  y: number;
+  height: number;
+  width: number
 }
 
 type WindowManagerContextType = {
@@ -21,7 +33,12 @@ type WindowManagerContextType = {
   lockStatus: string;
   toggleLockStatus: () => void;
   maximizeWindow: (window: WindowName) => void;
-  windowSize: WindowSize
+  windowSize: WindowDimensions;
+  isMaximized: boolean;
+  windowPosition: WindowPosition;
+  setWindowPosition: React.Dispatch<React.SetStateAction<WindowPosition>>;
+  setWindowSize: React.Dispatch<React.SetStateAction<WindowDimensions>>;
+  setIsMaximized: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const WindowManagerContext = createContext<WindowManagerContextType | null>(
@@ -33,12 +50,23 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
   const [windows, setWindows] = useState<WindowState>({ finder: false });
   const [lockStatus, setLockStatus] = useState<string>('locked');
   const [headerClock, setHeaderClock] = useState<boolean>(true);
-  const [windowSize, SetWindowSize] = useState<{
-    width: 'w-200' | 'w-screen',
-    height: 'h-100' | 'h-screen',
-  }>({
-    width: 'w-200',
-    height: 'h-100'
+  const [isMaximized, setIsMaximized] = useState<boolean>(false);
+
+  const [windowSize, setWindowSize] = useState<WindowDimensions>({
+    width: 900,
+    height: 500
+  });
+
+  const [windowPosition, setWindowPosition] = useState<WindowPosition>({
+    x: 350,
+    y: 200,
+  });
+
+  const [previousWindow, setPreviousWindow] = useState<PreviousWindow>({
+    x: 300,
+    y: 100,
+    width: 800,
+    height: 500,
   });
 
   const openWindow = (window: WindowName) => {
@@ -56,16 +84,42 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
   };
 
   const maximizeWindow = (window: WindowName) => {
-    if (windowSize.height === 'h-100' || windowSize.width === 'w-200') {
-      SetWindowSize({
-        width: 'w-screen',
-        height: 'h-screen'
+    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect()
+
+    if (!draggableRegion) return
+
+    if (!isMaximized) {
+      setPreviousWindow({
+        x: windowPosition.x,
+        y: windowPosition.y,
+        width: windowSize.width,
+        height: windowSize.height
       })
+
+      setWindowPosition({
+        x: draggableRegion.left,
+        y: draggableRegion.top
+      })
+
+      setWindowSize({
+        width: draggableRegion.width,
+        height: draggableRegion.height
+      })
+
+      setIsMaximized(true);
     } else {
-      SetWindowSize({
-        width: 'w-200',
-        height: 'h-100'
+
+      setWindowPosition({
+        x: previousWindow.x,
+        y: previousWindow.y
       })
+
+      setWindowSize({
+        width: previousWindow.width,
+        height: previousWindow.height
+      })
+
+      setIsMaximized(false);
     }
   }
 
@@ -92,6 +146,11 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
   return (
     <WindowManagerContext.Provider
       value={{
+        windowPosition,
+        isMaximized,
+        setIsMaximized,
+        setWindowPosition,
+        setWindowSize,
         lockStatus,
         toggleLockStatus,
         maximizeWindow,

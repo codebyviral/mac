@@ -10,9 +10,10 @@ import {
 import CircleButton from '@/components/actions/CircleButton';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import interact from 'interactjs';
 
 const FinderWindow = () => {
-  const { isOpen, windowSize } = useWindowManager();
+  const { isOpen, windowSize, windowPosition, setWindowPosition, maximizeWindow } = useWindowManager();
   const finderRef = useRef(null)
 
   let windowDimension = {
@@ -61,26 +62,71 @@ const FinderWindow = () => {
     })
   }, [windowSize])
 
-  return (
-    <div className="z-50">
-      <div
-        ref={finderRef}
-        className={isOpen('finder') ? 'block opacity-100' : 'hidden opacity-0'}
-      >
-        <div className={`absolute top-1/2 left-1/2 ${windowDimension.height} ${windowDimension.width} -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white dark:bg-[#1E1E1E]`}>
-          <div className="flex group">
-            {windowActions?.map((item) => (
-              <CircleButton
-                key={item.name}
-                takeAction={item.action}
-                Icon={item.icon}
-                bg={item.bg}
-                text={item.text}
-              />
-            ))}
-          </div>
+  useEffect(() => {
+    const position = {
+      x: windowPosition.x,
+      y: windowPosition.y,
+    }
 
-          <hr className="mt-2 h-1 bg-[#0000000D]" />
+    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+
+    if (draggableRegion) {
+      interact('.finder-window')
+        .styleCursor(false)
+        .draggable({
+          allowFrom: '.finder-window-header',
+          listeners: {
+            move(event) {
+              position.x += event.dx;
+              position.y += event.dy;
+
+              setWindowPosition({ x: position.x, y: position.y })
+
+              const maxX = draggableRegion.right - event.target.offsetWidth;
+              const maxY = draggableRegion.bottom - event.target.offsetHeight;
+
+              position.x = Math.max(draggableRegion.left, Math.min(position.x, maxX));
+              position.y = Math.max(draggableRegion.top, Math.min(position.y, maxY));
+
+              event.target.style.left = `${position.x}px`;
+              event.target.style.top = `${position.y}px`;
+            }
+          },
+        });
+    }
+
+  }, [isOpen('finder')])
+
+  return (
+    <div>
+      <div>
+      </div>
+      <div className="z-100">
+        <div
+          ref={finderRef}
+          className={isOpen('finder') ? 'block opacity-100' : 'hidden opacity-0'}
+        >
+          <div id='draggable-area' className='opacity-0 z-1 bg-transparent text-white absolute top-8 w-screen h-[calc(100%-11.8rem)]'>Draggable Area</div>
+          <div style={{
+            left: windowPosition.x,
+            top: windowPosition.y,
+            width: windowSize.width,
+            height: windowSize.height
+          }} className={`z-2 finder-window absolute rounded-2xl bg-white dark:bg-[#1E1E1E] ${windowDimension.width} ${windowDimension.height}`}>
+            <div onDoubleClick={() => maximizeWindow('finder')} className="flex finder-window-header group items-center">
+              {windowActions?.map((item) => (
+                <CircleButton
+                  key={item.name}
+                  takeAction={item.action}
+                  Icon={item.icon}
+                  bg={item.bg}
+                  text={item.text}
+                />
+              ))}
+              <div className='text-sm mt-2 ml-3'>Work</div>
+            </div>
+            <hr className="mt-2 h-1 bg-[#0000000D]" />
+          </div>
         </div>
       </div>
     </div>
