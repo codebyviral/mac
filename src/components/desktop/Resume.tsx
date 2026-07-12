@@ -31,10 +31,10 @@ const Resume = () => {
 
     return (
         <div className=''>
-            <div className="absolute md:top-100 top-50 left-3 md:left-100 flex-col items-center resume-app-icon">
+            <div className="absolute md:top-130 top-50 left-3 md:left-100 flex flex-col items-center resume-app-icon justify-center">
                 <Image
                     onDoubleClick={() => openWindow('finder')}
-                    className={`w-26.25 object-cover absolute cursor-none transition-all ease-in-out duration-500 ${resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'}`}
+                    className={`w-20 md:w-26.25 object-cover absolute cursor-none transition-all ease-in-out duration-500 ${resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'}`}
                     src={ResumeLight}
                     priority
                     quality={100}

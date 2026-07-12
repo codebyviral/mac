@@ -10,7 +10,7 @@ const Dock = () => {
 
     return (
         <div className="dock-ui">
-            <div className="bg-linear-to-b from dock absolute bottom-20 w-84 h-19.5 left-1/2 -translate-x-1/2 flex justify-center rounded-[24px] items-center gap-3">
+            <div className="bg-linear-to-b from dock absolute bottom-5 md:bottom-20 w-84 h-19.5 left-1/2 -translate-x-1/2 flex justify-center rounded-[24px] items-center gap-3">
                 <div className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px]">
                     <Image draggable={false} className="p-3" src={PenWithNibAppIcon} alt="app" />
                     <svg className="hidden">

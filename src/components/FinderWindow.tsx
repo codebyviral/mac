@@ -108,7 +108,7 @@ const FinderWindow = () => {
           ref={finderRef}
           className={isOpen('finder') ? 'block opacity-100' : 'hidden opacity-0'}
         >
-          <div id='draggable-area' className='opacity-0 z-1 bg-transparent text-white absolute top-8 w-screen h-[calc(100%-11.8rem)]'>Draggable Area</div>
+          <div id='draggable-area' className='z-1 bg-transparent opacity-0 text-white absolute top-8 w-screen md:h-[calc(100%-11.8rem)] h-[calc(100%-8rem)]'>Draggable Area</div>
           <div style={{
             left: windowPosition.x,
             top: windowPosition.y,
