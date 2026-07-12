@@ -12,6 +12,7 @@ const Desktop = () => {
 
   const { disableHeaderClock, lockStatus } = useWindowManager();
   const desktopRef = useRef(null)
+  const desktopAnimateRef = useRef(null)
 
   useEffect(() => {
     disableHeaderClock(false)
@@ -28,17 +29,29 @@ const Desktop = () => {
     })
   }, [lockStatus])
 
+  useEffect(() => {
+
+    gsap.fromTo(desktopAnimateRef.current, {
+      opacity: 0,
+      delay: 0.5
+    }, {
+      opacity: 1,
+      duration: 2
+    })
+
+  }, [])
+
   return (
     <div className='h-screen w-screen relative overflow-hidden'>
       <div>
         <div ref={desktopRef}>
           <Background />
-          <div className="flex items-center">
+          <div ref={desktopAnimateRef} className="flex items-center">
             <Folder />
             <Resume />
+            <FinderWindow />
+            <Dock />
           </div>
-          <FinderWindow />
-          <Dock />
         </div>
       </div>
     </div>

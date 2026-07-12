@@ -28,10 +28,10 @@ const Folder = () => {
 
   return (
     <div className=''>
-      <div className="absolute top-100 md:left-100 flex flex-col items-center folder-app-icon">
+      <div className="absolute md:top-100 top-20 left-3 md:left-100 flex flex-col items-center folder-app-icon">
         <Image
           onDoubleClick={() => openWindow('finder')}
-          className="w-26.25 object-cover cursor-none"
+          className="w-20 md:w-26.25 object-cover cursor-none"
           src={FolderImg}
           priority
           quality={100}

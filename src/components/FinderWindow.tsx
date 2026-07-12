@@ -11,6 +11,8 @@ import CircleButton from '@/components/actions/CircleButton';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import interact from 'interactjs';
+import { finderData } from '@/data/finder';
+import TreeNode from '@/components/finder/TreeNode';
 
 const FinderWindow = () => {
   const { isOpen, windowSize, windowPosition, setWindowPosition, maximizeWindow } = useWindowManager();
@@ -123,9 +125,10 @@ const FinderWindow = () => {
                   text={item.text}
                 />
               ))}
-              <div className='text-sm mt-2 ml-3'>Work</div>
+              <div className='text-sm mt-2 ml-3 font-bold'>Works</div>
             </div>
             <hr className="mt-2 h-1 bg-[#0000000D]" />
+            <TreeNode node={finderData} depth={0} />
           </div>
         </div>
       </div>
