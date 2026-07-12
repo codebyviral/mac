@@ -16,24 +16,19 @@ const ProfileCircleBhavya = (props: ProfileProps) => {
 
     const lockRef = useRef<HTMLDivElement>(null)
 
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key == 'Enter') {
+            toggleLockStatus();
+        }
+    }
+
     useEffect(() => {
         disableHeaderClock(true)
-
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key == 'Enter') toggleLockStatus();
-        }
-
-        window.addEventListener('keydown', handleKeyDown)
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown)
-        }
-
     }, [])
 
     return (
         <div ref={lockRef} className="select-none">
-            <div className="absolute bottom-35.25 items-center left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-47.25 items-center left-1/2 -translate-x-1/2">
                 <div className="flex flex-col items-center">
                     <Image
                         width={60}
@@ -49,10 +44,13 @@ const ProfileCircleBhavya = (props: ProfileProps) => {
                         }}
                     />
                     <div className="mt-3 flex flex-col items-center">
+                        <Input autoFocus className='opacity-0' onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => handleKeyPress(e)} />
                         <h1 className="text-white bg-white/10 bg-clip-text text-transparent">
                             Alex Turing
                         </h1>
                         <div
+                            onClick={() => toggleLockStatus()}
+                            data-cursor='pointer'
                             className="mt-3 flex flex-row gap-1 text-xs text-center font-bold text-white/60 bg-white/10 bg-clip-text text-transparent whitespace-nowrap"
                         >
                             Press <span> <Image src={MacReturnIcon} alt='command' /> </span> to explore my portfolio

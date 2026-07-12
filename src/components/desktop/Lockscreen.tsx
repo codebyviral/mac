@@ -1,6 +1,6 @@
 import Background from '@/components/desktop/Background';
 import ProfileCircle from '@/components/user/ProfileCircle';
-import ProfileCircleBhavya from '@/components/user/ProfileCircleBhavya';
+import ProfileCircleBhavya from '@/components/user/ProfileCircleUser';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 

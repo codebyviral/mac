@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
-<polygon fill="#FFFFFF" points="8.2,20.9 8.2,4.9 19.8,16.5 13,16.5 12.6,16.6 "/>
-<polygon fill="#FFFFFF" points="17.3,21.6 13.7,23.1 9,12 12.7,10.5 "/>
-<rect x="12.5" y="13.6" transform="matrix(0.9221 -0.3871 0.3871 0.9221 -5.7605 6.5909)" width="2" height="8"/>
-<polygon points="9.2,7.3 9.2,18.5 12.2,15.6 12.6,15.5 17.4,15.5 "/>
+<svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.501 0.2601L9.884 8.6611C10.937 9.7171 10.19 11.5191 8.699 11.5191L7.475 11.519L8.6908 14.4067C8.9038 14.9127 8.9068 15.4727 8.6998 15.9817C8.4918 16.4917 8.0978 16.8897 7.5898 17.1027C7.3338 17.2097 7.0658 17.2637 6.7918 17.2637C5.9608 17.2637 5.2158 16.7687 4.8938 16.0027L3.616 12.965L2.784 13.7031C1.703 14.6591 0 13.8921 0 12.4481V0.8811C0 0.0971004 0.947 -0.2949 1.501 0.2601Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0.999512 1.52919C0.999512 1.39819 1.15851 1.33219 1.25051 1.42519L9.15851 9.35019C9.58951 9.78219 9.28351 10.5192 8.67351 10.5192L5.96951 10.5177L7.76911 14.7936C7.99611 15.3336 7.74211 15.9546 7.20311 16.1806C6.66211 16.4076 6.04211 16.1546 5.81611 15.6156L3.99851 11.2917L2.13851 12.9392C1.72251 13.3072 1.08061 13.0507 1.00661 12.5274L0.999512 12.4262V1.52919Z" fill="black"/>
 </svg>

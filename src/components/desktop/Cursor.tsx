@@ -39,12 +39,12 @@ const Cursor = ({ visible }: cursorProps) => {
     let frame: number;
 
     /**
-     * cursor drag smoothness
+     * cursor drag
      */
     const animate = () => {
-      position.current.x += (mouse.current.x - position.current.x - 10) * 0.25;
+      position.current.x += (mouse.current.x - position.current.x-1);
 
-      position.current.y += (mouse.current.y - position.current.y - 10) * 0.25;
+      position.current.y += (mouse.current.y - position.current.y-2);
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(
@@ -76,8 +76,8 @@ const Cursor = ({ visible }: cursorProps) => {
         className="pointer-events-none select-none"
         src={pointer ? pointerSvg : cursorSvg}
         alt="cursor"
-        width={30}
-        height={30}
+        width={11.5}
+        height={11.5}
         draggable={false}
         priority
         style={{
