@@ -54,12 +54,12 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
 
   const [windowSize, setWindowSize] = useState<WindowDimensions>({
     width: 900,
-    height: 600
+    height: 500
   });
 
   const [windowPosition, setWindowPosition] = useState<WindowPosition>({
-    x: window.innerWidth / 4,
-    y: window.innerHeight / 4 - 32
+    x: 0,
+    y: 32
   });
 
   const [previousWindow, setPreviousWindow] = useState<PreviousWindow>({
