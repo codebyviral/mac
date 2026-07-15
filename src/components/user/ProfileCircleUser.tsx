@@ -10,17 +10,25 @@ type ProfileProps = {
     imageUrl: string;
 };
 
-const ProfileCircleBhavya = (props: ProfileProps) => {
+const ProfileCircleUser = (props: ProfileProps) => {
 
     const { headerClock, disableHeaderClock, toggleLockStatus } = useWindowManager();
 
     const lockRef = useRef<HTMLDivElement>(null)
 
-    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleKeyPress = (e: KeyboardEvent) => {
         if (e.key == 'Enter') {
             toggleLockStatus();
         }
     }
+
+    useEffect(() => {
+        window.addEventListener('keypress', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keypress', handleKeyPress);
+        }
+    }, [])
 
     useEffect(() => {
         disableHeaderClock(true)
@@ -44,7 +52,6 @@ const ProfileCircleBhavya = (props: ProfileProps) => {
                         }}
                     />
                     <div className="mt-3 flex flex-col items-center">
-                        <Input autoFocus className='opacity-0' onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => handleKeyPress(e)} />
                         <h1 className="text-white bg-white/10 bg-clip-text text-transparent">
                             Alex Turing
                         </h1>
@@ -62,4 +69,4 @@ const ProfileCircleBhavya = (props: ProfileProps) => {
     );
 };
 
-export default ProfileCircleBhavya;
+export default ProfileCircleUser;

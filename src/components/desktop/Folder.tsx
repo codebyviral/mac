@@ -15,6 +15,8 @@ const Folder = () => {
       y: 0,
     }
 
+    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+
     interact('.folder-app-icon').draggable({
       listeners: {
         move(event) {

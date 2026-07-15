@@ -1,5 +1,6 @@
 import Background from '@/components/desktop/Background';
 import ProfileCircle from '@/components/user/ProfileCircle';
+import ProfileCircleUser from '@/components/user/ProfileCircleUser';
 import ProfileCircleBhavya from '@/components/user/ProfileCircleUser';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
@@ -47,7 +48,7 @@ export default function Lockscreen() {
       }
     );
   }, [formattedTime]);
-  
+
 
   return (
     <div className="select-none h-screen w-screen">
@@ -65,8 +66,7 @@ export default function Lockscreen() {
           {formattedTime}
         </h1>
       </div>
-      <ProfileCircleBhavya imageUrl='' />
-      {/* <ProfileCircle imageUrl="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww" /> */}
+      <ProfileCircleUser imageUrl='' />
     </div>
   );
 }
