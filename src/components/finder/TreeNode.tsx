@@ -11,7 +11,7 @@ type TreeNodeProps = {
 }
 
 const TreeNode = ({ node, depth }: TreeNodeProps) => {
-    const [expanded, setExpanded] = useState(false)
+    const [expanded, setExpanded] = useState(true)
     return (
         <div>
             <div

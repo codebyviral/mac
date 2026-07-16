@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 
 type WindowName = 'finder';
 type WindowState = Record<WindowName, boolean>;
@@ -22,6 +22,17 @@ type PreviousWindow = {
   width: number
 }
 
+type DraggableDivRect = {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  top: number;
+  right: number;
+  bottom: number;
+  left: number;
+}
+
 type WindowManagerContextType = {
   windows: WindowState;
   openWindow: (window: WindowName) => void;
@@ -36,9 +47,11 @@ type WindowManagerContextType = {
   windowSize: WindowDimensions;
   isMaximized: boolean;
   windowPosition: WindowPosition;
+  draggableDivRect: DraggableDivRect,
   setWindowPosition: React.Dispatch<React.SetStateAction<WindowPosition>>;
   setWindowSize: React.Dispatch<React.SetStateAction<WindowDimensions>>;
   setIsMaximized: React.Dispatch<React.SetStateAction<boolean>>;
+  setDraggableDivRect: React.Dispatch<React.SetStateAction<DraggableDivRect>>
 };
 
 const WindowManagerContext = createContext<WindowManagerContextType | null>(
@@ -68,6 +81,19 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
     width: 800,
     height: 500,
   });
+
+  const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+
+  const [draggableDivRect, setDraggableDivRect] = useState<DraggableDivRect>({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  })
 
   const openWindow = (window: WindowName) => {
     setWindows((prev) => ({
@@ -150,6 +176,8 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
         isMaximized,
         setIsMaximized,
         setWindowPosition,
+        draggableDivRect,
+        setDraggableDivRect,
         setWindowSize,
         lockStatus,
         toggleLockStatus,

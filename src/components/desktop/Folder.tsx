@@ -1,50 +1,93 @@
 'use client';
+
 import Image from 'next/image';
-import FolderImg from '@/app/assets/Finder/folder-icon.png'
+import FolderImg from '@/app/assets/Finder/folder-icon.png';
 import { useWindowManager } from '@/hooks/useWindowManager';
 import interact from 'interactjs';
 import { useEffect } from 'react';
 
 const Folder = () => {
-
-  const { windows, openWindow } = useWindowManager();
+  const { openWindow, draggableDivRect } = useWindowManager();
 
   useEffect(() => {
+    const draggableRegion = draggableDivRect;
+
+    if (!draggableRegion) return;
+
     const position = {
-      x: 0,
-      y: 0,
-    }
+      x: 300,
+      y: 300,
+    };
 
-    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+    interact('.folder-app-icon')
+      .styleCursor(false)
+      .draggable({
+        listeners: {
+          start(event) {
+            position.x = event.target.offsetLeft;
+            position.y = event.target.offsetTop;
+          },
 
-    interact('.folder-app-icon').draggable({
-      listeners: {
-        move(event) {
-          position.x += event.dx;
-          position.y += event.dy;
-          event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
-        }
-      }
-    })
-  }, [])
+          move(event) {
+            position.x += event.dx;
+            position.y += event.dy;
+
+            const maxX =
+              draggableRegion.right -
+              draggableRegion.left -
+              event.target.offsetWidth;
+
+            const maxY =
+              draggableRegion.bottom -
+              draggableRegion.top -
+              event.target.offsetHeight;
+
+            position.x = Math.max(
+              0,
+              Math.min(position.x, maxX)
+            );
+
+            const minY = 32;
+
+            position.y = Math.max(
+              minY,
+              Math.min(position.y, maxY)
+            );
+
+            event.target.style.left = `${position.x}px`;
+            event.target.style.top = `${position.y}px`;
+          },
+        },
+      });
+
+    return () => {
+      interact('.folder-app-icon').unset();
+    };
+  }, [draggableDivRect]);
 
   return (
-    <div className=''>
-      <div className="absolute md:top-100 top-20 left-3 md:left-100 flex flex-col items-center folder-app-icon">
-        <Image
-          onDoubleClick={() => openWindow('finder')}
-          className="w-20 md:w-26.25 object-cover cursor-none"
-          src={FolderImg}
-          priority
-          quality={100}
-          alt="folder"
-          style={{
-            maxWidth: '100%',
-            height: 'auto',
-          }}
-        />
-        <h1 className="text-sm text-white select-none app-icon-text">Designs⚡️</h1>
-      </div>
+    <div
+      className="folder-app-icon absolute z-2 flex flex-col items-center"
+      style={{
+        left: 300,
+        top: 300,
+        width: 100,
+        height: 100,
+      }}
+      onDoubleClick={() => openWindow('finder')}
+    >
+      <Image
+        src={FolderImg}
+        alt="folder"
+        priority
+        quality={100}
+        draggable={false}
+        className="w-20 object-cover md:w-26"
+      />
+
+      <h1 className="app-icon-text select-none text-sm text-white">
+        Designs⚡️
+      </h1>
     </div>
   );
 };

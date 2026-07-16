@@ -10,7 +10,7 @@ import Resume from '@/components/desktop/Resume';
 
 const Desktop = () => {
 
-  const { disableHeaderClock, lockStatus } = useWindowManager();
+  const { disableHeaderClock, lockStatus, setDraggableDivRect, draggableDivRect } = useWindowManager();
   const desktopRef = useRef(null)
   const desktopAnimateRef = useRef(null)
 
@@ -41,6 +41,23 @@ const Desktop = () => {
 
   }, [])
 
+  useEffect(() => {
+    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+
+    if (draggableRegion) {
+      setDraggableDivRect({
+        x: draggableRegion.x,
+        y: draggableRegion.y,
+        width: draggableRegion.width,
+        height: draggableRegion.height,
+        top: draggableRegion.top,
+        right: draggableRegion.right,
+        bottom: draggableRegion.bottom,
+        left: draggableRegion.left
+      })
+    }
+  }, []);
+
   return (
     <div className='h-screen w-screen relative overflow-hidden'>
       <div>
@@ -54,6 +71,7 @@ const Desktop = () => {
           </div>
         </div>
       </div>
+      <div id='draggable-area' className='z-1 pointer-events-none bg-transparent opacity-0 text-white absolute top-8 w-screen md:h-[calc(100%-11.8rem)] h-[calc(100%-8rem)]'>Draggable Area</div>
     </div>
   );
 };

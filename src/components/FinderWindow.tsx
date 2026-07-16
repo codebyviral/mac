@@ -15,7 +15,7 @@ import { finderData } from '@/data/finder';
 import TreeNode from '@/components/finder/TreeNode';
 
 const FinderWindow = () => {
-  const { isOpen, windowSize, windowPosition, setWindowPosition, maximizeWindow } = useWindowManager();
+  const { isOpen, windowSize, windowPosition, setWindowPosition, maximizeWindow, draggableDivRect } = useWindowManager();
   const finderRef = useRef(null)
 
   let windowDimension = {
@@ -56,11 +56,11 @@ const FinderWindow = () => {
   useEffect(() => {
     gsap.from(finderRef.current, {
       opacity: 0,
-      duration: 0.1
+      duration: 0.5
     })
     gsap.to(finderRef.current, {
       opacity: 1,
-      duration: 0.1
+      duration: 0.5
     })
   }, [windowSize])
 
@@ -70,8 +70,7 @@ const FinderWindow = () => {
       y: windowPosition.y,
     }
 
-    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
-
+    const draggableRegion = draggableDivRect;
     if (draggableRegion) {
       interact('.finder-window')
         .styleCursor(false)
@@ -97,18 +96,15 @@ const FinderWindow = () => {
         });
     }
 
-  }, [isOpen('finder')])
+  }, [isOpen('finder'), draggableDivRect])
 
   return (
     <div>
-      <div>
-      </div>
       <div className="z-100">
         <div
           ref={finderRef}
           className={isOpen('finder') ? 'block opacity-100' : 'hidden opacity-0'}
         >
-          <div id='draggable-area' className='z-1 bg-transparent opacity-0 text-white absolute top-8 w-screen md:h-[calc(100%-11.8rem)] h-[calc(100%-8rem)]'>Draggable Area</div>
           <div style={{
             left: windowPosition.x,
             top: windowPosition.y,
