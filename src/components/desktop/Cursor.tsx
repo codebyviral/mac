@@ -42,9 +42,9 @@ const Cursor = ({ visible }: cursorProps) => {
      * cursor drag
      */
     const animate = () => {
-      position.current.x += (mouse.current.x - position.current.x-1);
+      position.current.x += (mouse.current.x - position.current.x - 1);
 
-      position.current.y += (mouse.current.y - position.current.y-2);
+      position.current.y += (mouse.current.y - position.current.y - 2);
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(
@@ -70,14 +70,14 @@ const Cursor = ({ visible }: cursorProps) => {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 z-[999999] pointer-events-none"
+      className="fixed top-0 left-0 z-999999 pointer-events-none"
     >
       <Image
         className="pointer-events-none select-none"
         src={pointer ? pointerSvg : cursorSvg}
         alt="cursor"
-        width={11.5}
-        height={11.5}
+        width={pointer ? 30 : 11.5}
+        height={pointer ? 30 : 11.5}
         draggable={false}
         priority
         style={{

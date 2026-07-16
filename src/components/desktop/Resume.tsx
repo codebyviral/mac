@@ -34,23 +34,11 @@ const Resume = () => {
             <div className="absolute md:top-130 top-50 left-3 md:left-100 flex flex-col items-center resume-app-icon justify-center">
                 <Image
                     onDoubleClick={() => openWindow('finder')}
-                    className={`w-20 md:w-26.25 object-cover absolute cursor-none transition-all ease-in-out duration-500 ${resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'}`}
-                    src={ResumeLight}
+                    src={resolvedTheme === 'dark' ? ResumeDark : ResumeLight}
+                    className="w-20 md:w-26.25 object-cover cursor-none"
                     priority
                     quality={100}
-                    alt="folder"
-                    style={{
-                        maxWidth: '100%',
-                        height: 'auto',
-                    }}
-                />
-                <Image
-                    onDoubleClick={() => openWindow('finder')}
-                    className={`w-20 md:w-26.25 object-cover cursor-none transition-all ease-in-out duration-500 ${resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'}`}
-                    src={ResumeDark}
-                    priority
-                    quality={100}
-                    alt="folder"
+                    alt="Resume"
                     style={{
                         maxWidth: '100%',
                         height: 'auto',
