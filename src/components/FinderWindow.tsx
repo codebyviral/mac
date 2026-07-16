@@ -95,7 +95,9 @@ const FinderWindow = () => {
           },
         });
     }
-
+    return () => {
+      interact('.finder-window').unset();
+    }
   }, [isOpen('finder'), draggableDivRect])
 
   return (

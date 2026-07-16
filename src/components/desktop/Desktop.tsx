@@ -10,7 +10,7 @@ import Resume from '@/components/desktop/Resume';
 
 const Desktop = () => {
 
-  const { disableHeaderClock, lockStatus, setDraggableDivRect, draggableDivRect } = useWindowManager();
+  const { disableHeaderClock, lockStatus, setDraggableDivRect, draggableDivRect, setWindowPosition } = useWindowManager();
   const desktopRef = useRef(null)
   const desktopAnimateRef = useRef(null)
 
@@ -54,6 +54,13 @@ const Desktop = () => {
         right: draggableRegion.right,
         bottom: draggableRegion.bottom,
         left: draggableRegion.left
+      })
+    }
+
+    if (window) {
+      setWindowPosition({
+        x: window.innerWidth / 4,
+        y: window.innerHeight / 4
       })
     }
   }, []);

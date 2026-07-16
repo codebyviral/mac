@@ -71,8 +71,8 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
   });
 
   const [windowPosition, setWindowPosition] = useState<WindowPosition>({
-    x: window.innerWidth / 4,
-    y: window.innerHeight / 4
+    x: 0,
+    y: 0
   });
 
   const [previousWindow, setPreviousWindow] = useState<PreviousWindow>({
