@@ -42,27 +42,24 @@ const Desktop = () => {
   }, [])
 
   useEffect(() => {
-    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
 
-    if (draggableRegion) {
-      setDraggableDivRect({
-        x: draggableRegion.x,
-        y: draggableRegion.y,
-        width: draggableRegion.width,
-        height: draggableRegion.height,
-        top: draggableRegion.top,
-        right: draggableRegion.right,
-        bottom: draggableRegion.bottom,
-        left: draggableRegion.left
-      })
+    if (typeof document !== "undefined") {
+      const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+
+      if (draggableRegion) {
+        setDraggableDivRect({
+          x: draggableRegion.x,
+          y: draggableRegion.y,
+          width: draggableRegion.width,
+          height: draggableRegion.height,
+          top: draggableRegion.top,
+          right: draggableRegion.right,
+          bottom: draggableRegion.bottom,
+          left: draggableRegion.left
+        })
+      }
     }
 
-    if (window) {
-      setWindowPosition({
-        x: window.innerWidth / 4,
-        y: window.innerHeight / 4
-      })
-    }
   }, []);
 
   return (

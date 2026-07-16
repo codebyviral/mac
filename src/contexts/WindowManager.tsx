@@ -82,7 +82,9 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
     height: 500,
   });
 
-  const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+  if (typeof document !== "undefined") {
+    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
+  }
 
   const [draggableDivRect, setDraggableDivRect] = useState<DraggableDivRect>({
     x: 0,
@@ -110,42 +112,44 @@ export function WindowManagerProvider({ children }: { children: ReactNode }) {
   };
 
   const maximizeWindow = (window: WindowName) => {
-    const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect()
+    if (typeof document !== "undefined") {
+      const draggableRegion = document.getElementById('draggable-area')?.getBoundingClientRect();
 
-    if (!draggableRegion) return
+      if (!draggableRegion) return
 
-    if (!isMaximized) {
-      setPreviousWindow({
-        x: windowPosition.x,
-        y: windowPosition.y,
-        width: windowSize.width,
-        height: windowSize.height
-      })
+      if (!isMaximized) {
+        setPreviousWindow({
+          x: windowPosition.x,
+          y: windowPosition.y,
+          width: windowSize.width,
+          height: windowSize.height
+        })
 
-      setWindowPosition({
-        x: draggableRegion.left,
-        y: draggableRegion.top
-      })
+        setWindowPosition({
+          x: draggableRegion.left,
+          y: draggableRegion.top
+        })
 
-      setWindowSize({
-        width: draggableRegion.width,
-        height: draggableRegion.height
-      })
+        setWindowSize({
+          width: draggableRegion.width,
+          height: draggableRegion.height
+        })
 
-      setIsMaximized(true);
-    } else {
+        setIsMaximized(true);
+      } else {
 
-      setWindowPosition({
-        x: previousWindow.x,
-        y: previousWindow.y
-      })
+        setWindowPosition({
+          x: previousWindow.x,
+          y: previousWindow.y
+        })
 
-      setWindowSize({
-        width: previousWindow.width,
-        height: previousWindow.height
-      })
+        setWindowSize({
+          width: previousWindow.width,
+          height: previousWindow.height
+        })
 
-      setIsMaximized(false);
+        setIsMaximized(false);
+      }
     }
   }
 
