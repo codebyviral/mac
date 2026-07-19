@@ -56,7 +56,7 @@ const Dock = () => {
                 }}
                     onMouseEnter={() => scaleIcons(0)}
                     onMouseLeave={() => scaleIcons(null)}
-                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px]">
+                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px] group">
                     <Image draggable={false} className="p-3" src={PenWithNibAppIcon} alt="app" />
                     <svg className="hidden">
                         <filter id="displacementFilter">
@@ -64,40 +64,115 @@ const Dock = () => {
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
                     </svg>
+                    <div className="tooltip">
+                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                            Tools
+                            <svg className="hidden">
+                                <filter id="displacementFilter">
+                                    <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                    <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                </filter>
+                            </svg>
+                            <div className="triangle dock-hover-icon-triangle absolute mt-1 w-[inherit] left-1/2 -translate-x-1/2">
+                                <svg className="hidden">
+                                    <filter id="displacementFilter">
+                                        <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                        <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                    </filter>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div ref={(el) => {
                     iconRefs.current[1] = el;
                 }}
                     onMouseEnter={() => scaleIcons(1)}
                     onMouseLeave={() => scaleIcons(null)}
-                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px]"><Image draggable={false} className="p-3" src={NavigateAppIcon} alt="app" /><svg className="hidden">
+                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px] group"><Image draggable={false} className="p-3" src={NavigateAppIcon} alt="app" /><svg className="hidden">
                         <filter id="displacementFilter">
                             <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
-                    </svg></div>
+                    </svg>
+                    <div className="tooltip">
+                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                            Experience
+                            <svg className="hidden">
+                                <filter id="displacementFilter">
+                                    <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                    <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                </filter>
+                            </svg>
+                            <div className="triangle dock-hover-icon-triangle absolute mt-1 w-[inherit] left-1/2 -translate-x-1/2">
+                                <svg className="hidden">
+                                    <filter id="displacementFilter">
+                                        <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                        <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                    </filter>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div ref={(el) => {
                     iconRefs.current[2] = el;
                 }}
                     onMouseEnter={() => scaleIcons(2)}
                     onMouseLeave={() => scaleIcons(null)}
-                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px]"><Image draggable={false} className="p-3" src={ContactAppIcon} alt="app" /><svg className="hidden">
+                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px] group"><Image draggable={false} className="p-3" src={ContactAppIcon} alt="app" /><svg className="hidden">
                         <filter id="displacementFilter">
                             <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
-                    </svg></div>
+                    </svg> <div className="tooltip">
+                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                            About
+                            <svg className="hidden">
+                                <filter id="displacementFilter">
+                                    <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                    <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                </filter>
+                            </svg>
+                            <div className="triangle dock-hover-icon-triangle absolute mt-1 w-[inherit] left-1/2 -translate-x-1/2">
+                                <svg className="hidden">
+                                    <filter id="displacementFilter">
+                                        <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                        <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                    </filter>
+                                </svg>
+                            </div>
+                        </div>
+                    </div></div>
                 <div ref={(el) => {
                     iconRefs.current[3] = el;
                 }}
                     onMouseEnter={() => scaleIcons(3)}
                     onMouseLeave={() => scaleIcons(null)}
-                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px]"><Image draggable={false} className="p-3" src={MailAppIcon} alt="app" /><svg className="hidden">
+                    className="bg-linear-to-b dock-app-icon w-13.5 h-13.5 ml-2 rounded-[12px] group"><Image draggable={false} className="p-3" src={MailAppIcon} alt="app" /><svg className="hidden">
                         <filter id="displacementFilter">
                             <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
-                    </svg></div>
+                    </svg> <div className="tooltip">
+                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                            Tools
+                            <svg className="hidden">
+                                <filter id="displacementFilter">
+                                    <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                    <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                </filter>
+                            </svg>
+                            <div className="triangle dock-hover-icon-triangle absolute mt-1 w-[inherit] left-1/2 -translate-x-1/2">
+                                <svg className="hidden">
+                                    <filter id="displacementFilter">
+                                        <feImage href="https://pub-3b507f062445437c85a69ea700087215.r2.dev/image.png" preserveAspectRatio="none" />
+                                        <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
+                                    </filter>
+                                </svg>
+                            </div>
+                        </div>
+                    </div></div>
             </div>
 
             <svg className="hidden">

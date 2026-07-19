@@ -35,7 +35,7 @@ const Resume = () => {
                 <Image
                     onDoubleClick={() => openWindow('finder')}
                     src={resolvedTheme === 'dark' ? ResumeDark : ResumeLight}
-                    className="w-20 md:w-26.25 object-cover cursor-none"
+                    className="w-20 md:w-26.25 object-cover cursor-none transition-all ease-in-out duration-300"
                     priority
                     quality={100}
                     alt="Resume"
