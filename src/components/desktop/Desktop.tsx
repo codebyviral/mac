@@ -57,6 +57,11 @@ const Desktop = () => {
           bottom: draggableRegion.bottom,
           left: draggableRegion.left
         })
+
+        setWindowPosition({
+          x: window.innerWidth / 4,
+          y: window.innerHeight / 4
+        })
       }
     }
 

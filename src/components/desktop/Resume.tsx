@@ -4,37 +4,96 @@ import ResumeLight from "@/app/assets/Resume/resume-light.png"
 import ResumeDark from "@/app/assets/Resume/resume-dark.png"
 import { useWindowManager } from '@/hooks/useWindowManager';
 import interact from 'interactjs';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
 const Resume = () => {
 
-    const { openWindow } = useWindowManager();
+    const { openWindow, draggableDivRect } = useWindowManager();
+    const [isDark, setIsDark] = useState(false);
     const { resolvedTheme } = useTheme();
 
     useEffect(() => {
+        const draggableRegion = draggableDivRect;
+
+        if (!draggableRegion) return;
+
         const position = {
-            x: 0,
-            y: 0,
+            x: 300,
+            y: 300,
+        };
+
+        interact('.resume-app-icon')
+            .styleCursor(false)
+            .draggable({
+                listeners: {
+                    start(event) {
+                        position.x = event.target.offsetLeft;
+                        position.y = event.target.offsetTop;
+                    },
+
+                    move(event) {
+                        position.x += event.dx;
+                        position.y += event.dy;
+
+                        const maxX =
+                            draggableRegion.right -
+                            draggableRegion.left -
+                            event.target.offsetWidth;
+
+                        const maxY =
+                            draggableRegion.bottom -
+                            draggableRegion.top -
+                            event.target.offsetHeight;
+
+                        position.x = Math.max(
+                            0,
+                            Math.min(position.x, maxX)
+                        );
+
+                        const minY = 32;
+
+                        position.y = Math.max(
+                            minY,
+                            Math.min(position.y, maxY)
+                        );
+
+                        event.target.style.left = `${position.x}px`;
+                        event.target.style.top = `${position.y}px`;
+                    },
+                },
+            });
+
+        return () => {
+            interact('.folder-app-icon').unset();
+        };
+    }, [draggableDivRect]);
+
+    useEffect(() => {
+
+        if (resolvedTheme === 'dark') {
+            setTimeout(() => {
+                setIsDark(true);
+            }, 300)
+        } else {
+            setTimeout(() => {
+                setIsDark(false);
+            }, 300)
         }
 
-        interact('.resume-app-icon').draggable({
-            listeners: {
-                move(event) {
-                    position.x += event.dx;
-                    position.y += event.dy;
-                    event.target.style.transform = `translate(${position.x}px, ${position.y}px)`
-                }
-            }
-        })
-    }, [])
+    }, [resolvedTheme])
 
     return (
         <div className=''>
-            <div className="absolute md:top-130 top-50 left-3 md:left-100 flex flex-col items-center resume-app-icon justify-center">
+            <div className="absolute flex flex-col items-center resume-app-icon justify-center" style={{
+                left: 1150,
+                top: 200,
+                width: 100,
+                height: 100,
+            }}>
                 <Image
                     onDoubleClick={() => openWindow('finder')}
-                    src={resolvedTheme === 'dark' ? ResumeDark : ResumeLight}
+                    src={isDark ? ResumeDark : ResumeLight}
                     className="w-20 md:w-26.25 object-cover cursor-none transition-all ease-in-out duration-300"
                     priority
                     quality={100}

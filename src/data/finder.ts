@@ -6,7 +6,7 @@ export type FinderNode = {
 
 export const finderData: FinderNode = {
   type: 'Folder',
-  name: 'Designs',
+  name: 'Designs⚡️',
   children: [
     {
       type: 'Folder',

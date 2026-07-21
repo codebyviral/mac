@@ -86,7 +86,7 @@ const Folder = () => {
       />
 
       <h1 className="app-icon-text select-none text-sm text-white">
-        Designs⚡️
+        Work
       </h1>
     </div>
   );

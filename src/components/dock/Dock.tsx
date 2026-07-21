@@ -65,7 +65,7 @@ const Dock = () => {
                         </filter>
                     </svg>
                     <div className="tooltip">
-                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                        <div className="absolute px-2 py-1 text-[10px] z-20 dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
                             Tools
                             <svg className="hidden">
                                 <filter id="displacementFilter">
@@ -96,7 +96,7 @@ const Dock = () => {
                         </filter>
                     </svg>
                     <div className="tooltip">
-                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                        <div className="absolute px-2 py-1 text-[10px] z-20 dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
                             Experience
                             <svg className="hidden">
                                 <filter id="displacementFilter">
@@ -126,7 +126,7 @@ const Dock = () => {
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
                     </svg> <div className="tooltip">
-                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                        <div className="absolute px-2 py-1 text-[10px] z-20 dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
                             About
                             <svg className="hidden">
                                 <filter id="displacementFilter">
@@ -155,7 +155,7 @@ const Dock = () => {
                             <feDisplacementMap in='SourceGraphic' scale='200' xChannelSelector="R" yChannelSelector="G" />
                         </filter>
                     </svg> <div className="tooltip">
-                        <div className="absolute px-2 py-1 text-sm dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
+                        <div className="absolute px-2 py-1 text-[10px] z-20 dock-app-icon left-1/2 -translate-x-1/2 bottom-20 dark:border dark:border-b-0 text-white rounded-full opacity-0 group-hover:opacity-100">
                             Tools
                             <svg className="hidden">
                                 <filter id="displacementFilter">
