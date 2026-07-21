@@ -20,11 +20,11 @@ const Desktop = () => {
 
   useEffect(() => {
     gsap.from(desktopRef.current, {
-      scale: 1.45,
+      opacity: 0,
       duration: 0.5,
     })
     gsap.to(desktopRef.current, {
-      scale: 1,
+      opacity: 1,
       duration: 0.5,
     })
   }, [lockStatus])

@@ -15,7 +15,7 @@ const TreeNode = ({ node, depth }: TreeNodeProps) => {
     return (
         <div>
             <div
-                className="flex gap-2 mt-2 ml-2 items-center"
+                className="flex gap-2 mt-2 ml-2 py-0.5 items-center hover:bg-[#0069F9] hover:text-white rounded-full transition-all ease-in-out duration-100"
                 onClick={() => setExpanded(!expanded)}
                 style={{
                     paddingLeft: `${depth * 20}px`
